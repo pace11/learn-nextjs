@@ -1,20 +1,28 @@
 import dynamic from "next/dynamic";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const LayoutComponent = dynamic(() => import("@/layout"));
 
 export default function Main() {
+  const [data, setData] = useState();
+
   useEffect(() => {
     fetch("/api/hello")
       .then((res) => res.json())
-      .then((res) => console.log("response => ", res))
+      .then((res) => setData(res))
       .catch((err) => console.log("err => ", err));
   }, []);
 
   return (
     <>
       <LayoutComponent metaTitle="Home">
-        <p>Home</p>
+        {data.users.map((item) => (
+          <ul>
+            <li>
+              {item.firstName} ({item?.gender})
+            </li>
+          </ul>
+        ))}
       </LayoutComponent>
     </>
   );
