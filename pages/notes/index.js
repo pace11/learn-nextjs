@@ -103,8 +103,8 @@ export default function Notes() {
   );
 }
 
-// export async function getStaticProps() {
-//   const res = await fetch("https://paace-f178cafcae7b.nevacloud.io/api/notes");
-//   const notes = await res.json();
-//   return { props: { notes }, revalidate: 10 };
-// }
+export async function getStaticProps() {
+  const res = await fetch("https://paace-f178cafcae7b.nevacloud.io/api/notes");
+  const notes = await res.json();
+  return { props: { notes }, revalidate: 10 };
+}
