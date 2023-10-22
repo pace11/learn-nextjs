@@ -42,64 +42,59 @@ export default function Notes() {
   };
 
   return (
-    <>
-      <LayoutComponent metaTitle="Notes">
-        <Box padding="5">
-          <Flex justifyContent="end">
-            <Button
-              colorScheme="blue"
-              onClick={() => router.push("/notes/add")}
-            >
-              Add Notes
-            </Button>
+    <LayoutComponent metaTitle="Notes">
+      <Box padding="5">
+        <Flex justifyContent="end">
+          <Button colorScheme="blue" onClick={() => router.push("/notes/add")}>
+            Add Notes
+          </Button>
+        </Flex>
+        {isLoading ? (
+          <Flex alignItems="center" justifyContent="center">
+            <Spinner
+              thickness="4px"
+              speed="0.65s"
+              emptyColor="gray.200"
+              color="blue.500"
+              size="xl"
+            />
           </Flex>
-          {isLoading ? (
-            <Flex alignItems="center" justifyContent="center">
-              <Spinner
-                thickness="4px"
-                speed="0.65s"
-                emptyColor="gray.200"
-                color="blue.500"
-                size="xl"
-              />
-            </Flex>
-          ) : (
-            <Flex>
-              <Grid templateColumns="repeat(3, 1fr)" gap={5}>
-                {data?.data?.map((item) => (
-                  <GridItem>
-                    <Card>
-                      <CardHeader>
-                        <Heading>{item?.title}</Heading>
-                      </CardHeader>
-                      <CardBody>
-                        <Text>{item?.description}</Text>
-                      </CardBody>
-                      <CardFooter justify="space-between" flexWrap="wrap">
-                        <Button
-                          onClick={() => router.push(`/notes/edit/${item?.id}`)}
-                          flex="1"
-                          variant="ghost"
-                        >
-                          Edit
-                        </Button>
-                        <Button
-                          onClick={() => HandleDelete(item?.id)}
-                          flex="1"
-                          colorScheme="red"
-                        >
-                          Delete
-                        </Button>
-                      </CardFooter>
-                    </Card>
-                  </GridItem>
-                ))}
-              </Grid>
-            </Flex>
-          )}
-        </Box>
-      </LayoutComponent>
-    </>
+        ) : (
+          <Flex>
+            <Grid templateColumns="repeat(3, 1fr)" gap={5}>
+              {data?.data?.map((item) => (
+                <GridItem>
+                  <Card>
+                    <CardHeader>
+                      <Heading>{item?.title}</Heading>
+                    </CardHeader>
+                    <CardBody>
+                      <Text>{item?.description}</Text>
+                    </CardBody>
+                    <CardFooter justify="space-between" flexWrap="wrap">
+                      <Button
+                        onClick={() => router.push(`/notes/edit/${item?.id}`)}
+                        flex="1"
+                        variant="ghost"
+                      >
+                        Edit
+                      </Button>
+                      <Button
+                        onClick={() => HandleDelete(item?.id)}
+                        flex="1"
+                        colorScheme="red"
+                      >
+                        Delete
+                      </Button>
+                    </CardFooter>
+                  </Card>
+                </GridItem>
+              ))}
+            </Grid>
+          </Flex>
+        )}
+      </Box>
+    </LayoutComponent>
   );
 }
 

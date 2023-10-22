@@ -5,19 +5,17 @@ const LayoutComponent = dynamic(() => import("@/layout"));
 export default function Notes({ posts }) {
   console.log("data posts => ", posts);
   return (
-    <>
-      <LayoutComponent metaTitle="Posts">
-        {posts.map((item) => (
-          <div>
-            <p>{item.id}</p>
-            <p>
-              <b>{item.title}</b>
-            </p>
-            <p>{item.body}</p>
-          </div>
-        ))}
-      </LayoutComponent>
-    </>
+    <LayoutComponent metaTitle="Posts">
+      {posts.map((item) => (
+        <div>
+          <p>{item.id}</p>
+          <p>
+            <b>{item.title}</b>
+          </p>
+          <p>{item.body}</p>
+        </div>
+      ))}
+    </LayoutComponent>
   );
 }
 

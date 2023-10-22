@@ -1,10 +1,12 @@
 import Link from "next/link";
-import { Menu, MenuButton, MenuList, MenuItem, Button } from "@chakra-ui/react";
+import {
+  Menu, MenuButton, MenuList, MenuItem, Button
+} from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
-import { useMutation } from "@/hooks/useMutation";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 import { useContext } from "react";
+import { useMutation } from "@/hooks/useMutation";
 import { UserContext } from "@/context/UserContext";
 
 import styles from "./styles.module.css";

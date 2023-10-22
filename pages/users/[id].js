@@ -1,5 +1,5 @@
-import Layout from "@/layout";
 import { useRouter } from "next/router";
+import Layout from "@/layout";
 
 export default function UsersByName() {
   const router = useRouter();
