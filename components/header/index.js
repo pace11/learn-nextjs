@@ -1,22 +1,18 @@
 import Link from "next/link";
 import { Menu, MenuButton, MenuList, MenuItem, Button } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
-import { useQueries } from "@/hooks/useQueries";
 import { useMutation } from "@/hooks/useMutation";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
+import { useContext } from "react";
+import { UserContext } from "@/context/UserContext";
 
 import styles from "./styles.module.css";
 
 export default function Header() {
+  const userData = useContext(UserContext);
   const router = useRouter();
   const { mutate } = useMutation();
-  const { data } = useQueries({
-    prefixUrl: "https://paace-f178cafcae7b.nevacloud.io/api/user/me",
-    headers: {
-      Authorization: `Bearer ${Cookies.get("user_token")}`,
-    },
-  });
 
   const HandleLogout = async () => {
     const response = await mutate({
@@ -55,7 +51,7 @@ export default function Header() {
         <li>
           <Menu>
             <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-              {data?.data?.name}
+              {userData?.name}
             </MenuButton>
             <MenuList>
               <MenuItem onClick={() => HandleLogout()}>Logout</MenuItem>

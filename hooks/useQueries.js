@@ -1,4 +1,3 @@
-import { headers } from "@/next.config";
 import { useCallback, useEffect, useState } from "react";
 
 export const useQueries = ({ prefixUrl = "", headers = {} } = {}) => {
