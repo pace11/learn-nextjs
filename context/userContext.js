@@ -1,6 +1,6 @@
 import { createContext } from "react";
-import { useQueries } from "@/hooks/useQueries";
 import Cookies from "js-cookie";
+import { useQueries } from "@/hooks/useQueries";
 
 export const UserContext = createContext({});
 
